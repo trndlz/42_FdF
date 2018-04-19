@@ -6,7 +6,7 @@
 /*   By: tmervin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/18 14:40:30 by tmervin           #+#    #+#             */
-/*   Updated: 2018/04/19 15:52:52 by tmervin          ###   ########.fr       */
+/*   Updated: 2018/04/19 17:01:22 by tmervin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,5 +59,7 @@ t_cam					*cam_data(void);
 void					test(t_inf *data);
 int						deal_key(int key, t_inf *data);
 int						expose_hook(t_inf *data);
+void					change(t_inf *data);
+
 
 #endif

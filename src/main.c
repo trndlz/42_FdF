@@ -6,7 +6,7 @@
 /*   By: tmervin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 11:42:49 by tmervin           #+#    #+#             */
-/*   Updated: 2018/04/19 15:54:28 by tmervin          ###   ########.fr       */
+/*   Updated: 2018/04/19 17:25:12 by tmervin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,16 +27,21 @@ int		main(int ac, char **av)
 		return (-1);
 	if (fill_map(&data) != 1)
 		return (-1);
-	//printdata(&data);
 	data.mlx = mlx_init();
 	data.win = mlx_new_window(data.mlx, 1024, 768, av[1]);
+	data.cam = cam_data();
 	mlx_expose_hook(data.win, expose_hook, &data);
 	mlx_key_hook(data.win, deal_key, &data);
+	
+	
+	
 	test(&data);
+	//change(&data);
+	//test(&data);
+
+
 	mlx_loop(data.mlx);
-	//mlx_pixel_put(data.mlx, data.win, 250, 250, 0xFFFFFF);
-
-
 	close(data.fd);
+
 	return (0);
 }

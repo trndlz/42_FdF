@@ -6,7 +6,7 @@
 /*   By: tmervin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 11:44:47 by tmervin           #+#    #+#             */
-/*   Updated: 2018/04/19 16:16:17 by tmervin          ###   ########.fr       */
+/*   Updated: 2018/04/19 17:21:24 by tmervin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,20 @@ t_cam		*cam_data(void)
 	cam->ex = -100;
 	cam->ey = -200;
 	cam->ez = 100;
-	cam->tx = 0;
+	cam->tx = 70;
 	cam->ty = 0;
 	cam->tz = 0;
-	cam->cosx = cos(cam->tx * M_PI / 180);
-	cam->cosy = cos(cam->ty * M_PI / 180);
-	cam->cosz = cos(cam->tz * M_PI / 180);
-	cam->sinx = sin(cam->tx * M_PI / 180);
-	cam->siny = sin(cam->ty * M_PI / 180);
-	cam->sinz = sin(cam->tz * M_PI / 180);
 	return (cam);
+}
+
+void	calc_cosinus(t_inf *data)
+{
+	data->cam->cosx = cos(data->cam->tx * M_PI / 180);
+	data->cam->cosy = cos(data->cam->ty * M_PI / 180);
+	data->cam->cosz = cos(data->cam->tz * M_PI / 180);
+	data->cam->sinx = sin(data->cam->tx * M_PI / 180);
+	data->cam->siny = sin(data->cam->ty * M_PI / 180);
+	data->cam->sinz = sin(data->cam->tz * M_PI / 180);
 }
 
 int		expose_hook(t_inf *data)
@@ -40,7 +44,6 @@ int		expose_hook(t_inf *data)
 	if (!data)
 		return (-1);
 	return (0);
-
 }
 
 void	test(t_inf *data)
@@ -67,7 +70,7 @@ void	test(t_inf *data)
 	double bx;
 	double by;
 
-	data->cam = cam_data();
+	calc_cosinus(data);
 	cosx = data->cam->cosx;
 	cosy = data->cam->cosy;
 	cosz = data->cam->cosz;
@@ -82,9 +85,9 @@ void	test(t_inf *data)
 	ez = data->cam->ez;
 
 
-	mlx_clear_window(data->mlx, data->win);
+	printf("%d\n", data->cam->tx);
 
-	a = 5;
+	a = 1;
 	y = 0;
 	while (y < data->y)
 	{
@@ -105,17 +108,18 @@ void	test(t_inf *data)
 		}
 		y++;
 	}
-	
 }
 
-
+void	change(t_inf *data)
+{
+	data->cam->tx += 30;
+}
 
 int		deal_key(int key, t_inf *data)
 {
 	printf("KEY: %d\n", key);
 	if (key == 31) // 'o' key
 	{
-		mlx_clear_window(data->mlx, data->win);
 		data->cam->tx += 45;
 	}
 	if (key == 12) // 'q' key
