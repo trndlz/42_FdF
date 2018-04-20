@@ -6,7 +6,7 @@
 /*   By: tmervin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/18 14:40:30 by tmervin           #+#    #+#             */
-/*   Updated: 2018/04/19 17:01:22 by tmervin          ###   ########.fr       */
+/*   Updated: 2018/04/20 09:51:13 by tmervin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include <math.h>
 # include "mlx.h"
 # include "../libft/includes/libft.h"
-# include "../includes/fdf.h"
 
 typedef struct			s_cam
 {
@@ -30,6 +29,9 @@ typedef struct			s_cam
 	int					ex;
 	int					ey;
 	int					ez;
+	int					a;
+	int					b;
+	int					c;
 	double				cosx;
 	double				cosy;
 	double				cosz;

@@ -6,11 +6,11 @@
 /*   By: tmervin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 11:31:41 by tmervin           #+#    #+#             */
-/*   Updated: 2018/04/19 13:49:50 by tmervin          ###   ########.fr       */
+/*   Updated: 2018/04/20 08:56:47 by tmervin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fdf.h"
+#include "fdf.h"
 
 int		str_check(char *s)
 {
