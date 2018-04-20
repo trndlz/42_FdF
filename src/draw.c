@@ -6,7 +6,7 @@
 /*   By: tmervin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 11:44:47 by tmervin           #+#    #+#             */
-/*   Updated: 2018/04/20 14:47:10 by tmervin          ###   ########.fr       */
+/*   Updated: 2018/04/20 17:01:33 by tmervin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ t_cam		*cam_data(void)
 {
 	t_cam *cam;
 
-	cam = malloc(sizeof(cam));
+	if (!(cam = (t_cam*)malloc(sizeof(t_cam))))
+		return (NULL);
 	cam->cx = -100;
 	cam->cy = 300;
 	cam->cz = 400;
@@ -133,16 +134,11 @@ void	place_point(t_inf *d)
 		{
 			bx = calc_bx(d, x, y, d->map[y][x]);
 			by = calc_by(d, x, y, d->map[y][x]);
-			mlx_pixel_put(d->mlx, d->win, bx, by, 0xFFFFFF);
+			mlx_pixel_put(d->mlx, d->win, bx, by, 0xffff);
 			x++;
 		}
 		y++;
 	}
-}
-
-void	change(t_inf *data)
-{
-	data->cam->tx += 30;
 }
 
 int		deal_key(int key, t_inf *data)
@@ -185,7 +181,7 @@ int		deal_key(int key, t_inf *data)
 		mlx_destroy_window(data->mlx, data->win);
 		exit(1);
 	}
-	test(data);
+	place_point(data);
 	return (0);
 }
 

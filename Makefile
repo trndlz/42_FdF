@@ -6,7 +6,7 @@
 #    By: tmervin <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/04/18 12:30:26 by tmervin           #+#    #+#              #
-#    Updated: 2018/04/20 09:47:43 by tmervin          ###   ########.fr        #
+#    Updated: 2018/04/20 16:19:00 by tmervin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ CPPFLAGS	:= -Iincludes
 
 LDFLAGS		:= -Llibft
 LDLIBS		:= -lft
-MINILIBX	:= -L ./minilibx/ -lmlx -framework OpenGL -framework Appkit
+MINILIBX	:= -L ./minilibx_macos/ -lmlx -framework OpenGL -framework Appkit
 
 CC			:= gcc
 FLAGS		:= -Werror -Wall -Wextra
@@ -34,7 +34,7 @@ OBJ			:= $(addprefix $(OBJ_PATH)/,$(OBJ_NAME))
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	make -C libft 
+	### make -C libft 
 	$(CC) $(LDFLAGS) $(LDLIBS) $(MINILIBX) $^ -o $@
 
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c
@@ -42,12 +42,12 @@ $(OBJ_PATH)%.o: $(SRC_PATH)%.c
 	$(CC) $(CFLAGS) $(CPPFLAGS) -o $@ -c $<
 
 clean:
-	make clean -C libft/
+	### make clean -C libft/
 	rm -fv $(OBJ)
 	@rmdir $(OBJ_PATH) 2> /dev/null || true
 
 fclean: clean
-	make fclean -C libft/
+	### make fclean -C libft/
 	rm -fv $(NAME)
 
 re: fclean all

@@ -6,7 +6,7 @@
 /*   By: tmervin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/18 14:40:30 by tmervin           #+#    #+#             */
-/*   Updated: 2018/04/20 09:51:13 by tmervin          ###   ########.fr       */
+/*   Updated: 2018/04/20 16:20:09 by tmervin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int						get_map_info(t_inf *data);
 int						fill_map(t_inf *data);
 int						read_file(int ac, char **av);
 t_cam					*cam_data(void);
-void					test(t_inf *data);
+void					place_point(t_inf *data);
 int						deal_key(int key, t_inf *data);
 int						expose_hook(t_inf *data);
 void					change(t_inf *data);
