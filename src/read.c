@@ -6,7 +6,7 @@
 /*   By: tmervin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 11:31:41 by tmervin           #+#    #+#             */
-/*   Updated: 2018/04/20 16:24:23 by tmervin          ###   ########.fr       */
+/*   Updated: 2018/04/23 11:45:27 by tmervin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,17 +38,41 @@ int		get_map_info(t_inf *data)
 		{
 			if (!str_check(str[x]))
 				return (-1);
-			//free(str[x]);
+			free(str[x]);
 			x++;
 		}
-		//free(str);
-		//free(line);
+		free(str);
+		free(line);
 		data->y++;
 		data->x = x;
 	}
 	close(data->fd);
 	data->fd = open(data->file, O_RDONLY);
 	return (1);
+}
+
+void	z_limits(t_inf *d)
+{
+	int x;
+	int y;
+
+	d->z_max = d->map[0][0];
+	d->z_min = 0;
+
+	y = 0;
+	while (y < d->y)
+	{
+		x = 0;
+		while (x < d->x)
+		{
+			if (d->map[y][x] > d->z_max)
+				d->z_max = d->map[y][x];
+			if (d->map[y][x] < d->z_min)
+				d->z_min = d->map[y][x];
+			x++;
+		}
+		y++;
+	}
 }
 
 int		fill_map(t_inf *data)
@@ -73,8 +97,8 @@ int		fill_map(t_inf *data)
 			x++;
 		}
 		y++;
-		//free(str);
-		//free(line);
+		free(str);
+		free(line);
 	}
 	close(data->fd);
 	return (1);

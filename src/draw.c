@@ -6,7 +6,7 @@
 /*   By: tmervin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 11:44:47 by tmervin           #+#    #+#             */
-/*   Updated: 2018/04/20 17:01:33 by tmervin          ###   ########.fr       */
+/*   Updated: 2018/04/24 21:36:16 by tmervin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,16 @@ t_cam		*cam_data(void)
 
 	if (!(cam = (t_cam*)malloc(sizeof(t_cam))))
 		return (NULL);
-	cam->cx = -100;
-	cam->cy = 300;
-	cam->cz = 400;
-	cam->ez = 500;
-	cam->tx = 45;
-	cam->ty = -10;
-	cam->tz = -225;
-	cam->a = 10;
-	cam->b = 10;
-	cam->c = 10;
+	cam->cx = -50;
+	cam->cy = 250;
+	cam->cz = 350;
+	cam->ez = 1000;
+	cam->tx = 60;
+	cam->ty = -25;
+	cam->tz = -170;
+	cam->a = 1;
+	cam->b = 1;
+	cam->c = 1;
 	return (cam);
 }
 
@@ -145,17 +145,17 @@ int		deal_key(int key, t_inf *data)
 {
 	printf("KEY: %d\n", key);
 	if (key == 17) // T
-		data->cam->cx += 50;
+		data->cam->cx += 5;
 	if (key == 5) // G
-		data->cam->cy += 50;
+		data->cam->cy += 5;
 	if (key == 11) // B
-		data->cam->cz += 50;
+		data->cam->cz += 5;
 	if (key == 16) // Y
-		data->cam->cx -= 50;
+		data->cam->cx -= 5;
 	if (key == 4) // H
-		data->cam->cy -= 50;
+		data->cam->cy -= 5;
 	if (key == 45) // N
-		data->cam->cz -= 50;
+		data->cam->cz -= 5;
 	if (key == 14) // E
 		data->cam->tx += 5;
 	if (key == 2) // D
@@ -181,7 +181,7 @@ int		deal_key(int key, t_inf *data)
 		mlx_destroy_window(data->mlx, data->win);
 		exit(1);
 	}
-	place_point(data);
+	place_line2(data);
 	return (0);
 }
 

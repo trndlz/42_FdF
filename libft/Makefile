@@ -6,7 +6,7 @@
 #    By: tmervin <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/04/03 14:12:58 by tmervin           #+#    #+#              #
-#    Updated: 2018/04/18 11:38:15 by tmervin          ###   ########.fr        #
+#    Updated: 2018/04/23 10:45:37 by tmervin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -80,7 +80,10 @@ SRC = ./ft_memset.c			\
 	  ./ft_isupper.c		\
 	  ./ft_power.c			\
 	  ./ft_strrev.c			\
-	  ./get_next_line.c
+	  ./get_next_line.c		\
+	  ./ft_atoi_base.c		\
+	  ./ft_itoa_base.c		\
+	  ./ft_convert_base.c
 
 OBJS = $(SRC:.c=.o)
 

@@ -6,7 +6,7 @@
 #    By: tmervin <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/04/18 12:30:26 by tmervin           #+#    #+#              #
-#    Updated: 2018/04/20 16:19:00 by tmervin          ###   ########.fr        #
+#    Updated: 2018/04/24 09:39:07 by tmervin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,8 @@ NAME		:= fdf
 SRC_PATH	:= ./src
 SRC_NAME	:=	main.c		\
 				draw.c		\
+				line.c		\
+				color.c		\
 				read.c
 OBJ_PATH	:= ./src
 CPPFLAGS	:= -Iincludes
@@ -22,8 +24,7 @@ LDFLAGS		:= -Llibft
 LDLIBS		:= -lft
 MINILIBX	:= -L ./minilibx_macos/ -lmlx -framework OpenGL -framework Appkit
 
-CC			:= gcc
-FLAGS		:= -Werror -Wall -Wextra
+CC			:= gcc -Werror -Wall -Wextra
 
 OBJ_NAME	:= $(SRC_NAME:.c=.o)
 SRC			:= $(addprefix $(SRC_PATH)/,$(SRC_NAME))
@@ -39,7 +40,7 @@ $(NAME): $(OBJ)
 
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c
 	@mkdir $(OBJ_PATH) 2> /dev/null
-	$(CC) $(CFLAGS) $(CPPFLAGS) -o $@ -c $<
+	$(CC) $(CPPFLAGS) -o $@ -c $<
 
 clean:
 	### make clean -C libft/

@@ -6,7 +6,7 @@
 /*   By: tmervin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/03 14:12:06 by tmervin           #+#    #+#             */
-/*   Updated: 2018/04/18 11:33:11 by tmervin          ###   ########.fr       */
+/*   Updated: 2018/04/23 10:45:03 by tmervin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,5 +95,8 @@ int					ft_isupper(int c);
 int					ft_power(int nb, int power);
 char				*ft_strrev(char *str);
 int					get_next_line(const int fd, char **line);
+int					ft_atoi_base(const char *str, int str_base);
+char				*ft_itoa_base(long num, char *base);
+char				*ft_convert_base(char *nbr, char *base_from, char *base_to);
 
 #endif
