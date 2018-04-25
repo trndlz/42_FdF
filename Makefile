@@ -6,16 +6,18 @@
 #    By: tmervin <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/04/18 12:30:26 by tmervin           #+#    #+#              #
-#    Updated: 2018/04/24 09:39:07 by tmervin          ###   ########.fr        #
+#    Updated: 2018/04/25 16:13:10 by tmervin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		:= fdf
 SRC_PATH	:= ./src
 SRC_NAME	:=	main.c		\
-				draw.c		\
+				init.c		\
 				line.c		\
 				color.c		\
+				keyboard.c	\
+				calc.c		\
 				read.c
 OBJ_PATH	:= ./src
 CPPFLAGS	:= -Iincludes

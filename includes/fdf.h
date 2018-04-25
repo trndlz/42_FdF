@@ -6,7 +6,7 @@
 /*   By: tmervin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/18 14:40:30 by tmervin           #+#    #+#             */
-/*   Updated: 2018/04/24 19:24:19 by tmervin          ###   ########.fr       */
+/*   Updated: 2018/04/25 16:15:58 by tmervin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ typedef struct			s_points
 	int					sy;
 	int					err;
 	int					e2;
+	unsigned long		color;
 }						t_points;
 
 typedef struct			s_color
@@ -86,29 +87,49 @@ typedef struct			s_inf
 	struct s_color		*color;
 }						t_inf;
 
+/*
+** STRUCTURES INITIALISATION
+*/
+
+t_cam					*cam_data(void);
+void					calc_cosinus(t_inf *data);
+void					display_infos(t_inf *d);
+void					init_inf(t_inf *data, char **av);
+
+/*
+** READ / STRING CONVERSION
+*/
+
 int						str_check(char *s);
-void					printdata(t_inf *data);
 int						get_map_info(t_inf *data);
 int						fill_map(t_inf *data);
 int						read_file(int ac, char **av);
-t_cam					*cam_data(void);
 t_color					*color_data(void);
 unsigned long			get_color(t_inf *data, int z);
 void					place_point(t_inf *data);
-int						deal_key(int key, t_inf *data);
 int						expose_hook(t_inf *data);
-void					calc_cosinus(t_inf *data);
-void					display_infos(t_inf *d);
+
+/*
+** CALCULATION
+*/
+
 double					calc_dx(t_inf *d, int x, int y, int z);
 double					calc_dy(t_inf *d, int x, int y, int z);
 double					calc_dz(t_inf *d, int x, int y, int z);
 double					calc_bx(t_inf *d, int x, int y, int z);
 double					calc_by(t_inf *d, int x, int y, int z);
 void					place_line(t_inf *d);
-void					place_line2(t_inf *d);
 int						ft_abs(int i);
-void					plot_line(t_inf *d, int x0, int y0, int x1, int y1, int z);
-void					plot_line2(t_inf *d, t_points *p);
+void					plot_line(t_inf *d, t_points *p);
 void					z_limits(t_inf *data);
+
+/*
+** KEYBOARD
+*/
+
+int						deal_key(int key, t_inf *data);
+void					squeeze_zoom(int key, t_inf *data);
+void					translation(int key, t_inf *data);
+void					rotation(int key, t_inf *data);
 
 #endif

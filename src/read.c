@@ -6,7 +6,7 @@
 /*   By: tmervin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 11:31:41 by tmervin           #+#    #+#             */
-/*   Updated: 2018/04/23 11:45:27 by tmervin          ###   ########.fr       */
+/*   Updated: 2018/04/25 16:17:41 by tmervin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ void	z_limits(t_inf *d)
 
 	d->z_max = d->map[0][0];
 	d->z_min = 0;
-
 	y = 0;
 	while (y < d->y)
 	{
@@ -85,17 +84,15 @@ int		fill_map(t_inf *data)
 	if (!(data->map = (int**)malloc(sizeof(int*) * data->y)))
 		return (-1);
 	y = 0;
+	line = NULL;
 	while ((get_next_line(data->fd, &line)) == 1)
 	{
-		x = 0;
+		x = -1;
 		if (!(data->map[y] = (int*)malloc(sizeof(int) * data->x)))
 			return (-1);
 		str = ft_strsplit(line, ' ');
-		while (str[x])
-		{
+		while (str[++x])
 			data->map[y][x] = ft_atoi(str[x]);
-			x++;
-		}
 		y++;
 		free(str);
 		free(line);
