@@ -6,7 +6,7 @@
 /*   By: tmervin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/18 14:40:30 by tmervin           #+#    #+#             */
-/*   Updated: 2018/04/25 16:15:58 by tmervin          ###   ########.fr       */
+/*   Updated: 2018/04/25 18:12:35 by tmervin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ typedef struct			s_inf
 ** STRUCTURES INITIALISATION
 */
 
-t_cam					*cam_data(void);
+t_cam					*cam_data(t_inf *data);
 void					calc_cosinus(t_inf *data);
 void					display_infos(t_inf *d);
 void					init_inf(t_inf *data, char **av);

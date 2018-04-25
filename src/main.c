@@ -6,7 +6,7 @@
 /*   By: tmervin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 11:42:49 by tmervin           #+#    #+#             */
-/*   Updated: 2018/04/25 16:16:59 by tmervin          ###   ########.fr       */
+/*   Updated: 2018/04/25 18:15:27 by tmervin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int		main(int ac, char **av)
 	if (fill_map(data) != 1)
 		return (0);
 	z_limits(data);
+	data->cam = cam_data(data);
 	place_line(data);
 	mlx_loop(data->mlx);
 	return (0);

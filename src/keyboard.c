@@ -6,7 +6,7 @@
 /*   By: tmervin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/25 15:24:59 by tmervin           #+#    #+#             */
-/*   Updated: 2018/04/25 16:16:44 by tmervin          ###   ########.fr       */
+/*   Updated: 2018/04/25 18:58:29 by tmervin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,17 @@
 void	rotation(int key, t_inf *data)
 {
 	if (key == 40)
-		data->cam->tx += 5;
+		data->cam->tx += 2;
 	if (key == 38)
-		data->cam->ty += 5;
+		data->cam->ty += 2;
 	if (key == 32)
-		data->cam->tz += 5;
+		data->cam->tz += 2;
 	if (key == 34)
-		data->cam->tx -= 5;
+		data->cam->tx -= 2;
 	if (key == 37)
-		data->cam->ty -= 5;
+		data->cam->ty -= 2;
 	if (key == 31)
-		data->cam->tz -= 5;
+		data->cam->tz -= 2;
 }
 
 void	translation(int key, t_inf *data)
