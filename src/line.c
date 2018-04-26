@@ -6,7 +6,7 @@
 /*   By: tmervin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/20 17:09:07 by tmervin           #+#    #+#             */
-/*   Updated: 2018/04/25 16:17:51 by tmervin          ###   ########.fr       */
+/*   Updated: 2018/04/26 14:01:22 by tmervin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,8 @@ void	place_line(t_inf *d)
 	calc_cosinus(d);
 	mlx_clear_window(d->mlx, d->win);
 	display_infos(d);
+	display_infos2(d);
+	display_infos3(d);
 	p = malloc(sizeof(t_points));
 	y = 0;
 	while (y < d->y)

@@ -6,7 +6,7 @@
 /*   By: tmervin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/18 14:40:30 by tmervin           #+#    #+#             */
-/*   Updated: 2018/04/25 18:12:35 by tmervin          ###   ########.fr       */
+/*   Updated: 2018/04/26 13:58:58 by tmervin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,7 @@ typedef struct			s_points
 
 typedef struct			s_color
 {
-	int					rmin;
-	int					rmax;
-	int					gmin;
-	int					gmax;
-	int					bmin;
-	int					bmax;
+	int					col[6];
 }						t_color;
 
 typedef struct			s_cam
@@ -93,8 +88,7 @@ typedef struct			s_inf
 
 t_cam					*cam_data(t_inf *data);
 void					calc_cosinus(t_inf *data);
-void					display_infos(t_inf *d);
-void					init_inf(t_inf *data, char **av);
+void					init_inf(t_inf *data, int ac, char **av);
 
 /*
 ** READ / STRING CONVERSION
@@ -104,10 +98,18 @@ int						str_check(char *s);
 int						get_map_info(t_inf *data);
 int						fill_map(t_inf *data);
 int						read_file(int ac, char **av);
-t_color					*color_data(void);
-unsigned long			get_color(t_inf *data, int z);
 void					place_point(t_inf *data);
 int						expose_hook(t_inf *data);
+void					free_map(t_inf *data);
+
+/*
+** COLORS
+*/
+
+t_color					*color_data(void);
+t_color					*color_data_user(char **av);
+void					color_check(t_color *color);
+unsigned long			get_color(t_inf *data, int z);
 
 /*
 ** CALCULATION
@@ -132,4 +134,13 @@ void					squeeze_zoom(int key, t_inf *data);
 void					translation(int key, t_inf *data);
 void					rotation(int key, t_inf *data);
 
+/*
+** MISC
+*/
+
+void					ft_usage(void);
+void					ft_color_range(void);
+void					display_infos3(t_inf *d);
+void					display_infos2(t_inf *d);
+void					display_infos(t_inf *d);
 #endif
