@@ -1,1 +1,0 @@
- gcc -I ./minilibx/ main.c -L ./minilibx -lmlx -framework OpenGL -framework Appkit
