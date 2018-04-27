@@ -6,7 +6,7 @@
 /*   By: tmervin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/27 16:24:56 by tmervin           #+#    #+#             */
-/*   Updated: 2018/04/27 16:29:14 by tmervin          ###   ########.fr       */
+/*   Updated: 2018/04/27 16:53:17 by tmervin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ void	display_infos2(t_inf *d)
 	mlx_string_put(d->mlx, d->win, 1750, 125, 0xFFFFFF, "Y AXIS (J / L) : ");
 	mlx_string_put(d->mlx, d->win, 1920, 125, 0xFFFFFF, ty);
 	mlx_string_put(d->mlx, d->win, 10, 5, 0xC8C8C8, "EXIT : ESC");
+	mlx_string_put(d->mlx, d->win, 10, 25, 0xC8C8C8, "REINITIALIZE : ENTER");
 	free(tz);
 	free(ty);
 	free(a);
