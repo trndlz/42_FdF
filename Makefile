@@ -6,7 +6,7 @@
 #    By: tmervin <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/04/18 12:30:26 by tmervin           #+#    #+#              #
-#    Updated: 2018/04/27 15:39:57 by tmervin          ###   ########.fr        #
+#    Updated: 2018/04/27 16:39:46 by tmervin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,8 @@ SRC_NAME	:=	main.c		\
 				color.c		\
 				keyboard.c	\
 				calc.c		\
-				misc.c		\
+				usage.c		\
+				display.c	\
 				read.c
 
 OBJ_PATH	:= ./src

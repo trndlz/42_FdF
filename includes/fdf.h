@@ -6,7 +6,7 @@
 /*   By: tmervin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/18 14:40:30 by tmervin           #+#    #+#             */
-/*   Updated: 2018/04/27 14:15:40 by tmervin          ###   ########.fr       */
+/*   Updated: 2018/04/27 16:28:09 by tmervin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,12 +145,19 @@ void					translation(int key, t_inf *data);
 void					rotation(int key, t_inf *data);
 
 /*
-** MISC
+** INFO DISPLAY
+*/
+
+void					display_infos3(t_inf *d);
+void					display_infos2(t_inf *d);
+void					display_infos(t_inf *d);
+
+/*
+** USAGE
 */
 
 void					ft_usage(void);
 void					ft_color_range(void);
-void					display_infos3(t_inf *d);
-void					display_infos2(t_inf *d);
-void					display_infos(t_inf *d);
+void					ft_invalid_file(void);
+
 #endif

@@ -6,7 +6,7 @@
 /*   By: tmervin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 11:42:49 by tmervin           #+#    #+#             */
-/*   Updated: 2018/04/27 15:29:33 by tmervin          ###   ########.fr       */
+/*   Updated: 2018/04/27 16:24:44 by tmervin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int		main(int ac, char **av)
 	data->mlx = mlx_init();
 	init_inf(data, ac, av);
 	if (data->fd < 0 || get_map_info(data) != 1)
-		return (0);
+		ft_invalid_file();
 	if (fill_map(data) != 1)
 		return (0);
 	z_limits(data);

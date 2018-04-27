@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   misc.c                                             :+:      :+:    :+:   */
+/*   display.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmervin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/26 14:01:33 by tmervin           #+#    #+#             */
-/*   Updated: 2018/04/26 14:03:30 by tmervin          ###   ########.fr       */
+/*   Created: 2018/04/27 16:24:56 by tmervin           #+#    #+#             */
+/*   Updated: 2018/04/27 16:29:14 by tmervin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,17 +85,4 @@ void	display_infos3(t_inf *d)
 	free(b);
 	free(c);
 	free(ez);
-}
-
-void	ft_usage(void)
-{
-	ft_putstr("Usage: ./fdf <mapname.fdf>\nColor option: ./fdf <mapname.fdf> ");
-	ft_putstr("[Rmin.Gmin.Bmin Rmax.Gmax.Bmax]\n");
-	exit(1);
-}
-
-void	ft_color_range(void)
-{
-	ft_putstr("Error: Individual colors must be	 between 0 and 255\n");
-	exit(1);
 }
