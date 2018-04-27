@@ -6,7 +6,7 @@
 /*   By: tmervin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/23 10:46:22 by tmervin           #+#    #+#             */
-/*   Updated: 2018/04/26 11:05:53 by tmervin          ###   ########.fr       */
+/*   Updated: 2018/04/27 11:56:59 by tmervin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,19 +25,6 @@ t_color				*color_data(void)
 	color->col[4] = 220;
 	color->col[5] = 93;
 	return (color);
-}
-
-void				color_check(t_color *color)
-{
-	int i;
-
-	i = 0;
-	while (i < 6)
-	{
-		if (color->col[i] < 0 || color->col[i] > 255)
-			ft_color_range();
-		i++;
-	}
 }
 
 t_color				*color_data_user(char **av)
@@ -67,6 +54,19 @@ t_color				*color_data_user(char **av)
 	if (a != 5)
 		return (NULL);
 	return (color);
+}
+
+void				color_check(t_color *color)
+{
+	int i;
+
+	i = 0;
+	while (i < 6)
+	{
+		if (color->col[i] < 0 || color->col[i] > 255)
+			ft_color_range();
+		i++;
+	}
 }
 
 unsigned long		get_color(t_inf *d, int z)

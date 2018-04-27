@@ -6,7 +6,7 @@
 /*   By: tmervin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/25 15:24:59 by tmervin           #+#    #+#             */
-/*   Updated: 2018/04/26 12:11:54 by tmervin          ###   ########.fr       */
+/*   Updated: 2018/04/27 15:27:50 by tmervin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,11 +69,11 @@ int		deal_key(int key, t_inf *data)
 	if (key == 53)
 	{
 		mlx_destroy_window(data->mlx, data->win);
-		return (0);
+		exit(1);
 	}
 	rotation(key, data);
 	translation(key, data);
 	squeeze_zoom(key, data);
-	place_line(data);
+	create_image(data);
 	return (0);
 }

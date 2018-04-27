@@ -6,7 +6,7 @@
 /*   By: tmervin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/18 14:40:30 by tmervin           #+#    #+#             */
-/*   Updated: 2018/04/26 13:58:58 by tmervin          ###   ########.fr       */
+/*   Updated: 2018/04/27 14:15:40 by tmervin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
 # include <stdio.h>
 # include <math.h>
 # include "mlx.h"
-# include "../libft/includes/libft.h"
+# include "libft.h"
 # define WIN_WIDTH 2048
-# define WIN_LENGTH 1024
+# define WIN_HEIGHT 1024
 
 typedef struct			s_points
 {
@@ -71,6 +71,11 @@ typedef struct			s_inf
 {
 	void				*mlx;
 	void				*win;
+	void				*image;
+	int					*imgstr;
+	int					bpp;
+	int					s_l;
+	int					endian;
 	int					fd;
 	char				*file;
 	int					**map;
@@ -124,6 +129,11 @@ void					place_line(t_inf *d);
 int						ft_abs(int i);
 void					plot_line(t_inf *d, t_points *p);
 void					z_limits(t_inf *data);
+
+void					fill_pixel(int x, int y, int color, t_inf *data);
+void					create_image(t_inf *d);
+void					fill_image(t_inf *d);
+void					create_image(t_inf *d);
 
 /*
 ** KEYBOARD

@@ -6,7 +6,7 @@
 /*   By: tmervin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 11:31:41 by tmervin           #+#    #+#             */
-/*   Updated: 2018/04/26 14:05:16 by tmervin          ###   ########.fr       */
+/*   Updated: 2018/04/27 15:28:57 by tmervin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ int		get_map_info(t_inf *data)
 		data->y++;
 		data->x = x;
 	}
+	free(line);
 	close(data->fd);
 	data->fd = open(data->file, O_RDONLY);
 	return (1);
@@ -84,7 +85,6 @@ int		fill_map(t_inf *data)
 	if (!(data->map = (int**)malloc(sizeof(int*) * data->y)))
 		return (-1);
 	y = -1;
-	line = NULL;
 	while ((get_next_line(data->fd, &line)) == 1)
 	{
 		x = -1;
@@ -99,13 +99,14 @@ int		fill_map(t_inf *data)
 		free(str);
 		free(line);
 	}
+	free(line);
 	close(data->fd);
 	return (1);
 }
 
 void	free_map(t_inf *data)
 {
-	int		y;
+	int y;
 
 	y = 0;
 	while (y < data->y)

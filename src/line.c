@@ -6,28 +6,25 @@
 /*   By: tmervin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/20 17:09:07 by tmervin           #+#    #+#             */
-/*   Updated: 2018/04/26 14:01:22 by tmervin          ###   ########.fr       */
+/*   Updated: 2018/04/27 15:36:33 by tmervin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int		ft_abs(int i)
+void	plot_image(t_inf *d, t_points *p)
 {
-	return (i < 0 ? -i : i);
-}
-
-void	plot_line(t_inf *d, t_points *p)
-{
-	p->dx = ft_abs(p->bx1 - p->bx0);
-	p->dy = -ft_abs(p->by1 - p->by0);
+	p->dx = abs(p->bx1 - p->bx0);
+	p->dy = -abs(p->by1 - p->by0);
 	p->sx = p->bx0 < p->bx1 ? 1 : -1;
 	p->sy = p->by0 < p->by1 ? 1 : -1;
 	p->err = p->dx + p->dy;
 	while (1)
 	{
 		p->color = get_color(d, p->z0 > p->z1 ? p->z1 : p->z0);
-		mlx_pixel_put(d->mlx, d->win, p->bx0, p->by0, p->color);
+		if (p->bx0 >= 0 && p->by0 >= 0 && p->bx0 < WIN_WIDTH &&
+				p->by0 < WIN_HEIGHT)
+			d->imgstr[p->bx0 + p->by0 * WIN_WIDTH] = (int)p->color;
 		if (p->bx0 == p->bx1 && p->by0 == p->by1)
 			break ;
 		p->e2 = 2 * p->err;
@@ -52,7 +49,7 @@ void	calc_data_right(t_inf *d, t_points *p, int x, int y)
 	p->by1 = calc_by(d, x + 1, y, d->map[y][x + 1]);
 	p->z0 = d->map[y][x];
 	p->z1 = d->map[y][x + 1];
-	plot_line(d, p);
+	plot_image(d, p);
 }
 
 void	calc_data_down(t_inf *d, t_points *p, int x, int y)
@@ -63,21 +60,32 @@ void	calc_data_down(t_inf *d, t_points *p, int x, int y)
 	p->by1 = calc_by(d, x, y + 1, d->map[y + 1][x]);
 	p->z0 = d->map[y][x];
 	p->z1 = d->map[y + 1][x];
-	plot_line(d, p);
+	plot_image(d, p);
 }
 
-void	place_line(t_inf *d)
+void	create_image(t_inf *d)
+{
+	calc_cosinus(d);
+	d->image = mlx_new_image(d->mlx, WIN_WIDTH, WIN_HEIGHT);
+	d->imgstr = (int *)mlx_get_data_addr(d->image, &d->bpp,
+			&d->s_l, &d->endian);
+	fill_image(d);
+	mlx_put_image_to_window(d->mlx, d->win, d->image, 0, 0);
+	display_infos(d);
+	display_infos2(d);
+	display_infos3(d);
+	mlx_destroy_image(d->mlx, d->image);
+	mlx_loop(d->mlx);
+}
+
+void	fill_image(t_inf *d)
 {
 	int			x;
 	int			y;
 	t_points	*p;
 
-	calc_cosinus(d);
-	mlx_clear_window(d->mlx, d->win);
-	display_infos(d);
-	display_infos2(d);
-	display_infos3(d);
-	p = malloc(sizeof(t_points));
+	if (!(p = malloc(sizeof(t_points))))
+		return ;
 	y = 0;
 	while (y < d->y)
 	{
@@ -92,4 +100,5 @@ void	place_line(t_inf *d)
 		}
 		y++;
 	}
+	free(p);
 }
