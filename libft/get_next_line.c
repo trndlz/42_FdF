@@ -6,7 +6,7 @@
 /*   By: tmervin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/11 10:45:13 by tmervin           #+#    #+#             */
-/*   Updated: 2018/04/18 11:34:14 by tmervin          ###   ########.fr       */
+/*   Updated: 2018/04/30 12:06:02 by tmervin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,8 @@ char			*reader(const int fd, t_list *t)
 		b[ret] = '\0';
 		tmp = str;
 		str = ft_strjoin(str, b);
-		free(tmp);
+		if (*tmp)
+			free(tmp);
 		if (ft_strchr(b, '\n'))
 			break ;
 	}
