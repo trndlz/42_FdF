@@ -6,7 +6,7 @@
 /*   By: tmervin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 11:44:47 by tmervin           #+#    #+#             */
-/*   Updated: 2018/04/27 13:55:11 by tmervin          ###   ########.fr       */
+/*   Updated: 2018/04/30 10:59:23 by tmervin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	calc_cosinus(t_inf *data)
 	data->cam->sinz = sin(data->cam->tz * M_PI / 180);
 }
 
-void	init_inf(t_inf *data, int ac, char **av)
+int		init_inf(t_inf *data, int ac, char **av)
 {
 	if (ac == 2)
 		data->color = color_data();
@@ -51,7 +51,13 @@ void	init_inf(t_inf *data, int ac, char **av)
 			ft_usage();
 		color_check(data->color);
 	}
+	data->fd = open(av[1], O_DIRECTORY);
+	if (data->fd > 0)
+		return (-1);
 	data->fd = open(av[1], O_RDONLY);
+	if (data->fd < 0)
+		return (-1);
 	data->file = av[1];
 	data->win = mlx_new_window(data->mlx, WIN_WIDTH, WIN_HEIGHT, "FILS DE FER");
+	return (1);
 }

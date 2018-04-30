@@ -6,7 +6,7 @@
 /*   By: tmervin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 11:42:49 by tmervin           #+#    #+#             */
-/*   Updated: 2018/04/27 16:24:44 by tmervin          ###   ########.fr       */
+/*   Updated: 2018/04/30 10:58:35 by tmervin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,9 @@ int		main(int ac, char **av)
 	if (!(data = malloc(sizeof(t_inf))))
 		return (0);
 	data->mlx = mlx_init();
-	init_inf(data, ac, av);
-	if (data->fd < 0 || get_map_info(data) != 1)
+	if (init_inf(data, ac, av) != 1)
+		ft_invalid_file();
+	if (get_map_info(data) != 1)
 		ft_invalid_file();
 	if (fill_map(data) != 1)
 		return (0);

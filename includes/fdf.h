@@ -6,7 +6,7 @@
 /*   By: tmervin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/18 14:40:30 by tmervin           #+#    #+#             */
-/*   Updated: 2018/04/27 16:28:09 by tmervin          ###   ########.fr       */
+/*   Updated: 2018/04/30 10:59:13 by tmervin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ typedef struct			s_inf
 
 t_cam					*cam_data(t_inf *data);
 void					calc_cosinus(t_inf *data);
-void					init_inf(t_inf *data, int ac, char **av);
+int						init_inf(t_inf *data, int ac, char **av);
 
 /*
 ** READ / STRING CONVERSION
