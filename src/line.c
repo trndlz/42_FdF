@@ -6,7 +6,7 @@
 /*   By: tmervin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/20 17:09:07 by tmervin           #+#    #+#             */
-/*   Updated: 2018/04/27 15:36:33 by tmervin          ###   ########.fr       */
+/*   Updated: 2018/05/01 14:52:04 by tmervin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ void	plot_image(t_inf *d, t_points *p)
 	while (1)
 	{
 		p->color = get_color(d, p->z0 > p->z1 ? p->z1 : p->z0);
-		if (p->bx0 >= 0 && p->by0 >= 0 && p->bx0 < WIN_WIDTH &&
-				p->by0 < WIN_HEIGHT)
+		if (p->bx0 > 0 && p->by0 > 0 && p->bx0 <= WIN_WIDTH
+				&& p->by0 <= WIN_HEIGHT)
 			d->imgstr[p->bx0 + p->by0 * WIN_WIDTH] = (int)p->color;
-		if (p->bx0 == p->bx1 && p->by0 == p->by1)
+		if ((p->bx0 == p->bx1 && p->by0 == p->by1) || (p->bx1 < 0 && p->by1 < 0))
 			break ;
 		p->e2 = 2 * p->err;
 		if (p->e2 >= p->dy)
@@ -43,10 +43,10 @@ void	plot_image(t_inf *d, t_points *p)
 
 void	calc_data_right(t_inf *d, t_points *p, int x, int y)
 {
-	p->bx0 = calc_bx(d, x, y, d->map[y][x]);
-	p->by0 = calc_by(d, x, y, d->map[y][x]);
-	p->bx1 = calc_bx(d, x + 1, y, d->map[y][x + 1]);
-	p->by1 = calc_by(d, x + 1, y, d->map[y][x + 1]);
+	p->bx0 = (int)calc_bx(d, x, y, d->map[y][x]);
+	p->by0 = (int)calc_by(d, x, y, d->map[y][x]);
+	p->bx1 = (int)calc_bx(d, x + 1, y, d->map[y][x + 1]);
+	p->by1 = (int)calc_by(d, x + 1, y, d->map[y][x + 1]);
 	p->z0 = d->map[y][x];
 	p->z1 = d->map[y][x + 1];
 	plot_image(d, p);
@@ -54,10 +54,10 @@ void	calc_data_right(t_inf *d, t_points *p, int x, int y)
 
 void	calc_data_down(t_inf *d, t_points *p, int x, int y)
 {
-	p->bx0 = calc_bx(d, x, y, d->map[y][x]);
-	p->by0 = calc_by(d, x, y, d->map[y][x]);
-	p->bx1 = calc_bx(d, x, y + 1, d->map[y + 1][x]);
-	p->by1 = calc_by(d, x, y + 1, d->map[y + 1][x]);
+	p->bx0 = (int)calc_bx(d, x, y, d->map[y][x]);
+	p->by0 = (int)calc_by(d, x, y, d->map[y][x]);
+	p->bx1 = (int)calc_bx(d, x, y + 1, d->map[y + 1][x]);
+	p->by1 = (int)calc_by(d, x, y + 1, d->map[y + 1][x]);
 	p->z0 = d->map[y][x];
 	p->z1 = d->map[y + 1][x];
 	plot_image(d, p);
