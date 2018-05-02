@@ -6,7 +6,7 @@
 /*   By: tmervin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 11:42:49 by tmervin           #+#    #+#             */
-/*   Updated: 2018/04/30 10:58:35 by tmervin          ###   ########.fr       */
+/*   Updated: 2018/05/02 10:05:09 by tmervin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ int		main(int ac, char **av)
 		ft_invalid_file();
 	if (fill_map(data) != 1)
 		return (0);
-	z_limits(data);
+	if (z_limits(data) != 1)
+		ft_invalid_file();
 	data->cam = cam_data(data);
 	mlx_hook(data->win, 2, 3, deal_key, data);
 	create_image(data);

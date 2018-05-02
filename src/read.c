@@ -6,7 +6,7 @@
 /*   By: tmervin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 11:31:41 by tmervin           #+#    #+#             */
-/*   Updated: 2018/04/30 18:20:10 by tmervin          ###   ########.fr       */
+/*   Updated: 2018/05/02 11:21:42 by tmervin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,13 +52,15 @@ int		get_map_info(t_inf *data)
 	return (1);
 }
 
-void	z_limits(t_inf *d)
+int		z_limits(t_inf *d)
 {
 	int x;
 	int y;
 
+	if (d->y == 0 && d->x == -1)
+		return (-1);
 	d->z_max = d->map[0][0];
-	d->z_min = 0;
+	d->z_min = d->map[0][0];
 	y = 0;
 	while (y < d->y)
 	{
@@ -73,6 +75,7 @@ void	z_limits(t_inf *d)
 		}
 		y++;
 	}
+	return (1);
 }
 
 int		fill_map(t_inf *data)

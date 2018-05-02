@@ -6,7 +6,7 @@
 /*   By: tmervin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/20 17:09:07 by tmervin           #+#    #+#             */
-/*   Updated: 2018/05/01 14:52:04 by tmervin          ###   ########.fr       */
+/*   Updated: 2018/05/02 11:22:00 by tmervin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ void	plot_image(t_inf *d, t_points *p)
 	p->sx = p->bx0 < p->bx1 ? 1 : -1;
 	p->sy = p->by0 < p->by1 ? 1 : -1;
 	p->err = p->dx + p->dy;
+	p->color = get_color(d, p->z0 > p->z1 ? p->z1 : p->z0);
 	while (1)
 	{
-		p->color = get_color(d, p->z0 > p->z1 ? p->z1 : p->z0);
-		if (p->bx0 > 0 && p->by0 > 0 && p->bx0 <= WIN_WIDTH
-				&& p->by0 <= WIN_HEIGHT)
-			d->imgstr[p->bx0 + p->by0 * WIN_WIDTH] = (int)p->color;
-		if ((p->bx0 == p->bx1 && p->by0 == p->by1) || (p->bx1 < 0 && p->by1 < 0))
+		if (p->bx0 > 0 && p->by0 > 0 && p->bx0 < WIDTH && p->by0 < HEIGHT)
+			d->imgstr[p->bx0 + p->by0 * WIDTH] = (int)p->color;
+		if ((p->bx0 == p->bx1 && p->by0 == p->by1)
+				|| (p->bx1 < 0 && p->by1 < 0))
 			break ;
 		p->e2 = 2 * p->err;
 		if (p->e2 >= p->dy)
@@ -66,7 +66,7 @@ void	calc_data_down(t_inf *d, t_points *p, int x, int y)
 void	create_image(t_inf *d)
 {
 	calc_cosinus(d);
-	d->image = mlx_new_image(d->mlx, WIN_WIDTH, WIN_HEIGHT);
+	d->image = mlx_new_image(d->mlx, WIDTH, HEIGHT);
 	d->imgstr = (int *)mlx_get_data_addr(d->image, &d->bpp,
 			&d->s_l, &d->endian);
 	fill_image(d);
@@ -93,9 +93,13 @@ void	fill_image(t_inf *d)
 		while (x < d->x)
 		{
 			if (x < (d->x - 1))
+			{
 				calc_data_right(d, p, x, y);
+			}
 			if (y < (d->y - 1))
+			{
 				calc_data_down(d, p, x, y);
+			}
 			x++;
 		}
 		y++;
