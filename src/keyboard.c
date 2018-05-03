@@ -6,7 +6,7 @@
 /*   By: tmervin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/25 15:24:59 by tmervin           #+#    #+#             */
-/*   Updated: 2018/04/27 16:52:31 by tmervin          ###   ########.fr       */
+/*   Updated: 2018/05/03 16:06:35 by tmervin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,17 +46,17 @@ void	translation(int key, t_inf *data)
 
 void	squeeze_zoom(int key, t_inf *data)
 {
-	if (key == 86)
+	if (key == 86 && data->cam->a < 10)
 		data->cam->a += 1;
-	if (key == 83)
+	if (key == 83 && data->cam->a > -10)
 		data->cam->a -= 1;
-	if (key == 87)
+	if (key == 87 && data->cam->b < 10)
 		data->cam->b += 1;
-	if (key == 84)
+	if (key == 84 && data->cam->b > -10)
 		data->cam->b -= 1;
-	if (key == 88)
+	if (key == 88 && data->cam->c < 10)
 		data->cam->c += 1;
-	if (key == 85)
+	if (key == 85 && data->cam->c > -10)
 		data->cam->c -= 1;
 	if (key == 69)
 		data->cam->ez += 50;
