@@ -6,7 +6,7 @@
 #    By: tmervin <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/04/18 12:30:26 by tmervin           #+#    #+#              #
-#    Updated: 2018/05/04 14:51:04 by tmervin          ###   ########.fr        #
+#    Updated: 2018/05/04 15:48:32 by tmervin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ SRC_NAME	:=	main.c		\
 				calc.c		\
 				usage.c		\
 				display.c	\
+				misc.c		\
 				read.c
 
 OBJ_PATH	:= ./src

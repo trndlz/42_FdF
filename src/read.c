@@ -6,7 +6,7 @@
 /*   By: tmervin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 11:31:41 by tmervin           #+#    #+#             */
-/*   Updated: 2018/05/02 11:21:42 by tmervin          ###   ########.fr       */
+/*   Updated: 2018/05/04 15:46:11 by tmervin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,15 @@ int		get_map_info(t_inf *data)
 	while ((get_next_line(data->fd, &line)) == 1)
 	{
 		x = -1;
-		str = ft_strsplit(line, ' ');
+		if (!(str = ft_strsplit(line, ' ')))
+			return (-1);
 		while (str[++x])
 		{
 			if (!str_check(str[x]))
 				return (-1);
 			free(str[x]);
 		}
-		free(str);
-		free(line);
+		free_two(str, line);
 		data->y++;
 		if (data->y > 1 && data->x != x)
 			return (-1);
@@ -93,14 +93,14 @@ int		fill_map(t_inf *data)
 		x = -1;
 		if (!(data->map[++y] = (int*)malloc(sizeof(int) * data->x)))
 			return (-1);
-		str = ft_strsplit(line, ' ');
+		if (!(str = ft_strsplit(line, ' ')))
+			return (-1);
 		while (str[++x])
 		{
 			data->map[y][x] = ft_atoi(str[x]);
 			free(str[x]);
 		}
-		free(str);
-		free(line);
+		free_two(str, line);
 	}
 	free(line);
 	close(data->fd);

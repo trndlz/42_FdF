@@ -6,7 +6,7 @@
 /*   By: tmervin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/18 14:40:30 by tmervin           #+#    #+#             */
-/*   Updated: 2018/05/04 14:47:58 by tmervin          ###   ########.fr       */
+/*   Updated: 2018/05/04 15:47:21 by tmervin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,5 +158,8 @@ void					display_infos(t_inf *d);
 void					ft_usage(void);
 void					ft_color_range(void);
 void					ft_invalid_file(void);
+
+void					free_two(char **s, char *l);
+int						inside(int x, int y);
 
 #endif
