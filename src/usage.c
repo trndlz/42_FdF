@@ -6,7 +6,7 @@
 /*   By: tmervin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/26 14:01:33 by tmervin           #+#    #+#             */
-/*   Updated: 2018/04/27 16:26:31 by tmervin          ###   ########.fr       */
+/*   Updated: 2018/05/04 14:47:25 by tmervin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,4 +29,11 @@ void	ft_invalid_file(void)
 {
 	ft_putstr("Error: Invalid file\n");
 	exit(1);
+}
+
+int		inside(int x, int y)
+{
+	if (x < 0 || y < 0 || x > WIDTH || y > HEIGHT)
+		return (0);
+	return (1);
 }

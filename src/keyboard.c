@@ -6,7 +6,7 @@
 /*   By: tmervin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/25 15:24:59 by tmervin           #+#    #+#             */
-/*   Updated: 2018/05/03 16:06:35 by tmervin          ###   ########.fr       */
+/*   Updated: 2018/05/04 14:22:41 by tmervin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,13 @@ void	rotation(int key, t_inf *data)
 void	translation(int key, t_inf *data)
 {
 	if (key == 0)
-		data->cam->cx += 5;
+		data->cam->cx += 1;
 	if (key == 13)
-		data->cam->cy += 5;
+		data->cam->cy += 1;
 	if (key == 14)
 		data->cam->cz += 5;
 	if (key == 2)
-		data->cam->cx -= 5;
+		data->cam->cx -= 1;
 	if (key == 1)
 		data->cam->cy -= 5;
 	if (key == 12)
@@ -46,21 +46,21 @@ void	translation(int key, t_inf *data)
 
 void	squeeze_zoom(int key, t_inf *data)
 {
-	if (key == 86 && data->cam->a < 10)
+	if (key == 86 && data->cam->a < 5)
 		data->cam->a += 1;
-	if (key == 83 && data->cam->a > -10)
+	if (key == 83 && data->cam->a > -5)
 		data->cam->a -= 1;
-	if (key == 87 && data->cam->b < 10)
+	if (key == 87 && data->cam->b < 5)
 		data->cam->b += 1;
-	if (key == 84 && data->cam->b > -10)
+	if (key == 84 && data->cam->b > -5)
 		data->cam->b -= 1;
-	if (key == 88 && data->cam->c < 10)
+	if (key == 88 && data->cam->c < 5)
 		data->cam->c += 1;
-	if (key == 85 && data->cam->c > -10)
+	if (key == 85 && data->cam->c > -5)
 		data->cam->c -= 1;
-	if (key == 69)
+	if (key == 69 && data->cam->ez < 1500)
 		data->cam->ez += 50;
-	if (key == 78)
+	if (key == 78 && data->cam->ez > 50)
 		data->cam->ez -= 50;
 }
 

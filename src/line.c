@@ -6,7 +6,7 @@
 /*   By: tmervin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/20 17:09:07 by tmervin           #+#    #+#             */
-/*   Updated: 2018/05/02 16:03:00 by tmervin          ###   ########.fr       */
+/*   Updated: 2018/05/04 14:50:21 by tmervin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,10 @@ void	plot_image(t_inf *d, t_points *p)
 	p->color = get_color(d, p->z0 > p->z1 ? p->z1 : p->z0);
 	while (1)
 	{
+		if (p->bx0 == p->bx1 && p->by0 == p->by1)
+			break ;
 		if (p->bx0 > 0 && p->by0 > 0 && p->bx0 < WIDTH && p->by0 < HEIGHT)
 			d->imgstr[p->bx0 + p->by0 * WIDTH] = (int)p->color;
-		if ((p->bx0 == p->bx1 && p->by0 == p->by1)
-				|| (p->bx1 < 0 && p->by1 < 0))
-			break ;
 		p->e2 = 2 * p->err;
 		if (p->e2 >= p->dy)
 		{
@@ -49,7 +48,8 @@ void	calc_data_right(t_inf *d, t_points *p, int x, int y)
 	p->by1 = (int)calc_by(d, x + 1, y, d->map[y][x + 1]);
 	p->z0 = d->map[y][x];
 	p->z1 = d->map[y][x + 1];
-	plot_image(d, p);
+	if (inside(p->bx0, p->by0) || inside(p->bx1, p->by1))
+		plot_image(d, p);
 }
 
 void	calc_data_down(t_inf *d, t_points *p, int x, int y)
@@ -60,7 +60,8 @@ void	calc_data_down(t_inf *d, t_points *p, int x, int y)
 	p->by1 = (int)calc_by(d, x, y + 1, d->map[y + 1][x]);
 	p->z0 = d->map[y][x];
 	p->z1 = d->map[y + 1][x];
-	plot_image(d, p);
+	if (inside(p->bx0, p->by0) || inside(p->bx1, p->by1))
+		plot_image(d, p);
 }
 
 void	create_image(t_inf *d)
@@ -93,13 +94,9 @@ void	fill_image(t_inf *d)
 		while (x < d->x)
 		{
 			if (x < (d->x - 1))
-			{
 				calc_data_right(d, p, x, y);
-			}
 			if (y < (d->y - 1))
-			{
 				calc_data_down(d, p, x, y);
-			}
 			x++;
 		}
 		y++;

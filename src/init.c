@@ -6,7 +6,7 @@
 /*   By: tmervin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 11:44:47 by tmervin           #+#    #+#             */
-/*   Updated: 2018/05/02 16:00:53 by tmervin          ###   ########.fr       */
+/*   Updated: 2018/05/04 14:49:21 by tmervin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,15 @@
 
 t_cam	*cam_data(t_inf *data)
 {
-	t_cam *cam;
+	t_cam	*cam;
+	int		z;
 
 	if (!(cam = (t_cam*)malloc(sizeof(t_cam))))
 		return (NULL);
-	cam->cx = 6 * data->x;
-	cam->cy = 4 * data->y;
-	cam->cz = 5 * data->x;
+	z = data->z_max - data->z_min;
+	cam->cx = 2.1 * data->x + z + data->y + 30;
+	cam->cy = 0.5 * data->x + 0.9 * data->y + 0.6 * z + 21;
+	cam->cz = 0.9 * data->x + 0.9 * data->y + 1.1 * z + 10;
 	cam->ez = 1000;
 	cam->tx = 90;
 	cam->ty = -30;

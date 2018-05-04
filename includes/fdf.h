@@ -6,7 +6,7 @@
 /*   By: tmervin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/18 14:40:30 by tmervin           #+#    #+#             */
-/*   Updated: 2018/05/02 16:09:13 by tmervin          ###   ########.fr       */
+/*   Updated: 2018/05/04 14:47:58 by tmervin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,9 +129,8 @@ void					place_line(t_inf *d);
 int						ft_abs(int i);
 void					plot_line(t_inf *d, t_points *p);
 int						z_limits(t_inf *data);
-
+int						inside(int x, int y);
 void					fill_pixel(int x, int y, int color, t_inf *data);
-void					create_image(t_inf *d);
 void					fill_image(t_inf *d);
 void					create_image(t_inf *d);
 
