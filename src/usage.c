@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   misc.c                                             :+:      :+:    :+:   */
+/*   usage.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmervin <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: tmervin <tmervin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/26 14:01:33 by tmervin           #+#    #+#             */
-/*   Updated: 2018/05/04 15:46:54 by tmervin          ###   ########.fr       */
+/*   Updated: 2018/05/07 14:26:31 by tmervin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,18 @@ void	ft_usage(void)
 	exit(1);
 }
 
-void	ft_malloc_error(void)
+void	ft_malloc_error_inf(void)
+{
+	ft_putstr("Error while structures malloc\n");
+	exit(1);
+}
+
+void	ft_malloc_error(t_inf *d)
 {
 	ft_putstr("Error while parsing and/or structures malloc\n");
+	free_structures(d);
+	if (d->mlx && d->win)
+		mlx_destroy_window(d->mlx, d->win);
 	exit(1);
 }
 

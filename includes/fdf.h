@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmervin <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: tmervin <tmervin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/18 14:40:30 by tmervin           #+#    #+#             */
-/*   Updated: 2018/05/04 15:47:21 by tmervin          ###   ########.fr       */
+/*   Updated: 2018/05/07 14:21:15 by tmervin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,6 @@ int						fill_map(t_inf *data);
 int						read_file(int ac, char **av);
 void					place_point(t_inf *data);
 int						expose_hook(t_inf *data);
-void					free_map(t_inf *data);
 
 /*
 ** COLORS
@@ -158,8 +157,11 @@ void					display_infos(t_inf *d);
 void					ft_usage(void);
 void					ft_color_range(void);
 void					ft_invalid_file(void);
-
+void					ft_malloc_error_inf(void);
+void					ft_malloc_error(t_inf *d);
 void					free_two(char **s, char *l);
 int						inside(int x, int y);
+void					free_map(t_inf *data);
+void					free_structures(t_inf *d);
 
 #endif
