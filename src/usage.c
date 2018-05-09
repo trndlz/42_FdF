@@ -6,7 +6,7 @@
 /*   By: tmervin <tmervin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/26 14:01:33 by tmervin           #+#    #+#             */
-/*   Updated: 2018/05/07 14:26:31 by tmervin          ###   ########.fr       */
+/*   Updated: 2018/05/09 14:21:59 by tmervin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ void	ft_malloc_error_inf(void)
 void	ft_malloc_error(t_inf *d)
 {
 	ft_putstr("Error while parsing and/or structures malloc\n");
-	free_structures(d);
 	if (d->mlx && d->win)
 		mlx_destroy_window(d->mlx, d->win);
 	exit(1);
@@ -36,7 +35,7 @@ void	ft_malloc_error(t_inf *d)
 
 void	ft_color_range(void)
 {
-	ft_putstr("Error: Individual colors must be	 between 0 and 255\n");
+	ft_putstr("Error: Individual colors must be between 0 and 255\n");
 	exit(1);
 }
 

@@ -6,7 +6,7 @@
 /*   By: tmervin <tmervin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 11:44:47 by tmervin           #+#    #+#             */
-/*   Updated: 2018/05/07 14:28:43 by tmervin          ###   ########.fr       */
+/*   Updated: 2018/05/09 14:19:51 by tmervin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,10 @@ void	calc_cosinus(t_inf *data)
 int		init_inf(t_inf *data, int ac, char **av)
 {
 	if (ac == 2)
-		data->color = color_data();
+	{
+		if (!(data->color = color_data()))
+			return (-1);
+	}
 	if (ac == 4)
 	{
 		if (!(data->color = color_data_user(av)))
