@@ -6,7 +6,7 @@
 /*   By: tmervin <tmervin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/18 14:40:30 by tmervin           #+#    #+#             */
-/*   Updated: 2018/05/09 14:17:31 by tmervin          ###   ########.fr       */
+/*   Updated: 2018/05/09 14:44:15 by tmervin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include "libft.h"
 # define WIDTH 2048
 # define HEIGHT 1024
-# define mlxst(a, b, c, d, e, f) mlx_string_put(a, b, c, d, e, (f ? f : "\0"))
+# define MLXST(A, B, C, D, E, F) mlx_string_put(A, B, C, D, E, (F ? F : "\0"))
 
 typedef struct			s_points
 {

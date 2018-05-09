@@ -6,7 +6,7 @@
 /*   By: tmervin <tmervin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 11:44:47 by tmervin           #+#    #+#             */
-/*   Updated: 2018/05/09 14:19:51 by tmervin          ###   ########.fr       */
+/*   Updated: 2018/05/09 14:45:39 by tmervin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ int		init_inf(t_inf *data, int ac, char **av)
 	data->file = av[1];
 	data->x = -1;
 	data->y = 0;
-	data->win = mlx_new_window(data->mlx, WIDTH, HEIGHT, "FILS DE FER");
+	if (!(data->win = mlx_new_window(data->mlx, WIDTH, HEIGHT, "FILS DE FER")))
+		return (-1);
 	return (1);
 }
