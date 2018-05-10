@@ -1,4 +1,4 @@
-# FdF
+# FdF a.k.a "Fils de fer"
 
 3D map renderer using Bresenham algorithm. Developped in C using miniLibX Library.
 
