@@ -19,5 +19,4 @@
 - https://en.wikipedia.org/wiki/3D_projection
 - https://en.wikipedia.org/wiki/Bresenham%27s_line_algorithm
 
-### Picture
 ![alt text](https://github.com/trndlz/FdF/blob/master/includes/img.png)
